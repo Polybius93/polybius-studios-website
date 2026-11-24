@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: 🏗️ Build
+    name: 🏗️ Build App
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,8 +20,8 @@ jobs:
       - run: npm run build
 
   format-check:
-    name: 🧹 Format Check
-    runs-on: ubuntu-latest
+    name: 🧹 Format Checsk
+    runs-on: ubuntu-latet
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/provision
