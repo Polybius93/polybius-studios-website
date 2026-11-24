@@ -4,8 +4,10 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import perfectionist from "eslint-plugin-perfectionist";
 import prettierConfig from "eslint-config-prettier";
+import reactX from "eslint-plugin-react-x";
 import unusedImports from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
+import importX from "eslint-plugin-import-x";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig(
@@ -14,42 +16,31 @@ export default defineConfig(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
+      reactX.configs["recommended-typescript"],
     ],
-    files: ["*/.{ts,tsx}"],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
       globals: globals.browser,
       parserOptions: {
-        projectService: {
-          allowDefaultProject: [".config.ts", ".config.js", "vitest.setup.ts"],
-        },
         tsconfigRootDir: import.meta.dirname,
       },
     },
     settings: {
       react: { version: "detect" },
-      "import/resolver": {
-        typescript: {},
-      },
     },
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
       perfectionist,
       "unused-imports": unusedImports,
+      "import-x": importX,
     },
     rules: {
-      "import/no-restricted-paths": [
-        "error",
-        {
-          zones: [],
-        },
-      ],
       ...reactHooks.configs.recommended.rules,
       ...reactRefresh.configs.recommended.rules,
       ...perfectionist.configs["recommended-natural"].rules,
-      "react/prop-types": "off",
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
@@ -60,12 +51,6 @@ export default defineConfig(
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
-      ],
-      "react/no-children-prop": [
-        "error",
-        {
-          allowFunctions: true,
-        },
       ],
       "unused-imports/no-unused-imports": "error",
     },
