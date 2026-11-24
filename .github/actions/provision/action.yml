@@ -1,0 +1,23 @@
+# .github/actions/provision/action.yml
+name: Provision
+description: Set up Node and install dependencies
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 26
+        cache: npm
+
+    - name: Cache node_modules
+      uses: actions/cache@v4
+      id: node-modules
+      with:
+        path: node_modules
+        key: node-modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install dependencies
+      if: steps.node-modules.outputs.cache-hit != 'true'
+      shell: bash
+      run: npm ci
