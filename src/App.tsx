@@ -1,21 +1,19 @@
-
-import { Button, ButtonGroup, HStack, Text, VStack } from "@chakra-ui/react";
-import "./App.css";
+import { NavigationBar } from "./components/navigation-bar";
+import { PageContainer } from "./components/page-container";
+import { About } from "./features/about";
+import { Contact } from "./features/contact";
+import { Experience } from "./features/experience/experience";
+import { TechnicalExpertise } from "./features/technical-expertise";
 
 function App() {
-
   return (
-    <VStack>
-      <HStack w="100%" justify="space-between" p="12px"><Text>polybius_studios</Text>
-      <ButtonGroup gap="12px">
-      <Button variant="ghost">/about</Button>
-      <Button variant="ghost">/experience</Button>
-      <Button variant="ghost">/tech_stack</Button>
-      <Button variant="ghost">/contact</Button>
-      </ButtonGroup>
-      </HStack>
-    </VStack>
-   
+    <PageContainer>
+      <NavigationBar />
+      <About />
+      <Experience />
+      <TechnicalExpertise />
+      <Contact />
+    </PageContainer>
   );
 }
 
