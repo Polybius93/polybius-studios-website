@@ -16,7 +16,8 @@
     "type:check": "tsc --noEmit --skipLibCheck",
     "prune": "ts-prune",
     "prune:check": "ts-prune --error",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.38.0",
@@ -58,6 +59,7 @@
     "ts-prune": "^0.10.3",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.72.1",
-    "vite": "^8.3.6"
+    "vite": "^8.3.6",
+    "vitest": "^5.1.2"
   }
 }
