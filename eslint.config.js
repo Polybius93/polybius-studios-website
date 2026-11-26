@@ -24,6 +24,7 @@ export default defineConfig(
       sourceType: "module",
       globals: globals.browser,
       parserOptions: {
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
